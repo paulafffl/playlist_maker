@@ -18,7 +18,8 @@ h1 {
 }
 
 h1 .highlight {
-  color: #6c41ec;
+  /* color: #6c41ec; */
+  color: #be9293;
 }
 
 h2 {
@@ -29,7 +30,8 @@ h2 {
 .App {
   height: 100%;
   padding: 0 17% 10% 17%;
-  background-image: url('./background_photo_desktop.jpg');
+  /* background-image: url('./background_photo_desktop.jpg'); */
+  background-image: url('./matt-botsford-OKLqGsCT8qs-unsplash.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
