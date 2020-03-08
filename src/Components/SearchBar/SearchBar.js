@@ -11,7 +11,6 @@ class SearchBar extends React.Component {
     this.handleTermChange = this.handleTermChange.bind(this);
   }
 
-//why this.state.term?? and why it doesn't receive any argument?
   search(){
     this.props.onSearch(this.state.term);
   }
@@ -24,7 +23,7 @@ class SearchBar extends React.Component {
     return (
       <div className="SearchBar">
         <input placeholder="Enter A Song, Album, or Artist" onChange={this.handleTermChange}/>
-        <button className="SearchButton">SEARCH</button>
+        <button className="SearchButton" onClick={this.search} >SEARCH</button>
       </div>
     )
   }

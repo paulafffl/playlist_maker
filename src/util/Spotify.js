@@ -5,7 +5,7 @@ const client_id = "5b3b133da7dc4f749ba57a7a3575e821";
 const redirectUri = "http://localhost:3000/";
 //const client_secret = "2e77fc3fd5d7477195256991456138d3";
 
-class Spotify extends React.Component {
+const Spotify = {
   getAccessToken(){
     if (accessToken){
       return accessToken;
@@ -27,7 +27,7 @@ class Spotify extends React.Component {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     } 
-  }
+  },
 
   search(term){
     const accessToken = Spotify.getAccessToken();
@@ -51,10 +51,36 @@ class Spotify extends React.Component {
         }
       });
     });
+  },
+
+  savePlaylist(playlistName, uriList){
+    if (!playlistName || !uriList){
+      return
+    }
+    const accessToken = Spotify.getAccessToken();
+    const headers = {Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json"}; 
+    let userId;
+    return fetch('https://api.spotify.com/v1/me', {headers: headers}    
+    ).then(response => response.json()
+    ).then(jsonResponse => {
+      userId = jsonResponse.id;
+      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        headers: headers,
+        method: 'POST',
+        body: JSON.stringify({name: playlistName})
+      }).then(response => response.json()
+      ).then(jsonResponse => {
+        const playlistId = jsonResponse.id;
+        return fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({uris: uriList})
+        })
+      })
+    })
+
   }
 
 }
-
-
 
 export default Spotify;
