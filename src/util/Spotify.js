@@ -2,9 +2,10 @@ import React from 'react';
 
 let accessToken;
 const client_id = "5b3b133da7dc4f749ba57a7a3575e821";
-const redirectUri = "http://react-app-jamming.surge.sh";
-//const redirectUri = "http://localhost:3000/";
+//const redirectUri = "http://react-app-jamming.surge.sh";
+const redirectUriLocal = "http://localhost:3000/";
 const Spotify = {
+  
   getAccessToken(){
     if (accessToken){
       return accessToken;
