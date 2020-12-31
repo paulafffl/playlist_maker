@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Track.css';
 
 class Track extends React.Component{
@@ -35,6 +36,13 @@ class Track extends React.Component{
       </div>
     )
   }
+}
+
+Track.propTypes = {
+  track: PropTypes.object.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  isRemoval: PropTypes.bool.isRequired
 }
 
 export default Track;
