@@ -18,8 +18,12 @@ h1 {
 }
 
 h1 .highlight {
-  /* color: #6c41ec; */
   color: #be9293;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-top: 1vh;
 }
 
 h2 {
