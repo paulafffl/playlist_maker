@@ -1,11 +1,12 @@
 .Playlist {
+    width: 45%;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
-    width: 37%;
+    overflow-x: hidden;
     max-height: 950px;
-    padding: 2.27rem 1.16rem;
     background-color: rgba(1, 12, 63, 0.7);
     box-shadow: 0 4px 2px 2px #000000;
   }
@@ -15,10 +16,13 @@
     border: 0;
     outline: 0;
     background: transparent;
-    border-bottom: 1px solid #6f6f6f;
+    border-bottom: 2px solid white;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.55rem;
-    color: #fff;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 2vh 0;
+    margin: 1vh;
+    color: #d6acad;
   }
   
   .Playlist-save {
@@ -44,13 +48,35 @@
   
   }
   
+  /* Webkit-based browsers (Chrome, Safari) */
+  /* Scrollbar */
   ::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
+    width: 0.5rem;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #be9293; 
+    border-radius: 5px;
+  }  
+
+  /* Firefox */
+  /* Scrollbar */
+  scrollbar {
+    width: 0.5rem;
+  }
+  /* Handle */
+  scrollbar thumb {
+    background: #be9293;
+    border-radius: 5px;
   }
   
   @media only screen and (max-width: 1020px) {
     .Playlist {
       width: 90%;
+      height: auto;
+      max-height: 60vh;
+      input {
+        font-size: 0.9rem;
+      }
     }
   }

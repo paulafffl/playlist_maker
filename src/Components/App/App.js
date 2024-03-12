@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchResults: [],
-      playlistName: 'Edit Playlist Name',
+      playlistName: 'Type to edit playlist name',
       playlistTracks: [],
       alert: ''
     };
