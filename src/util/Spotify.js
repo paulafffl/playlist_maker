@@ -2,10 +2,10 @@ let accessToken;
 const client_id = "5b3b133da7dc4f749ba57a7a3575e821";
 
 //redirectUri for deployment
-//const redirectUri = "http://react-app-jamming.surge.sh";
+const redirectUri = "http://react-app-jamming.surge.sh";
 
 //redirectUri for local use
-const redirectUri = "http://localhost:3000/";
+// const redirectUri = "http://localhost:3000/";
 
 const Spotify = {
   

@@ -29,7 +29,15 @@ class Playlist extends React.Component {
             SAVE TO SPOTIFY
           </button>
         </div>
-        <p> {this.props.alert} </p>
+        {this.props.alert && (
+          <p className="Succes-Message">
+            {this.props.alert}
+            <br />
+            <a href={"https://open.spotify.com/"} target="_blank">
+              Listen on your Spotify
+            </a>
+          </p>
+        )}
       </div>
     );
   }

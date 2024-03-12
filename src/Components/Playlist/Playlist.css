@@ -29,6 +29,18 @@
     justify-content: center;
   }
   
+  .Succes-Message {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    line-height: 1.5rem;
+  }
+
+  .Succes-Message a {
+    color: white;
+  }
+  
   .Playlist-save {
     cursor: pointer;
     width: 10rem;
