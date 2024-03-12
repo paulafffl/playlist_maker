@@ -1,9 +1,7 @@
 .Playlist {
     width: 45%;
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 950px;
     overflow-y: scroll;
     overflow-x: hidden;
     max-height: 950px;
@@ -21,8 +19,14 @@
     font-size: 1.3rem;
     text-align: center;
     padding: 2vh 0;
-    margin: 1vh;
+    margin: 1vh 0;
     color: #d6acad;
+  }
+
+  .Button-Container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .Playlist-save {
