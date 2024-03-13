@@ -7,9 +7,9 @@
     max-height: 950px;
     background-color: rgba(1, 12, 63, 0.7);
     box-shadow: 0 4px 2px 2px #000000;
-  }
-  
-  .Playlist input {
+}
+
+.Playlist input {
     width: 100%;
     border: 0;
     outline: 0;
@@ -21,78 +21,77 @@
     padding: 2vh 0;
     margin: 1vh 0;
     color: #d6acad;
-  }
+}
 
-  .Button-Container {
+.Button-Container {
     width: 100%;
     display: flex;
     justify-content: center;
-  }
-  
-  .Succes-Message {
+}
+
+.Succes-Message {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
     margin-top: 2rem;
     line-height: 1.5rem;
-  }
+}
 
-  .Succes-Message a {
+.Succes-Message a {
     color: white;
-  }
-  
-  .Playlist-save {
+}
+
+.Playlist-save {
     cursor: pointer;
     width: 10rem;
-    padding: .77rem 0;
+    padding: 0.77rem 0;
     border-radius: 54px;
     border-width: 0px;
     margin-top: 1.27rem;
     /* background-color: #6c41ec; */
     background-color: #be9293;
     text-align: center;
-    font-size: .83rem;
-    transition: background-color .25s;
+    font-size: 0.83rem;
+    transition: background-color 0.25s;
     color: #fff;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  .Playlist-save:hover {
+}
+
+.Playlist-save:hover {
     /* background-color: rgba(108, 65, 233, .7); */
     background-color: #935b5e;
-  
-  }
-  
-  /* Webkit-based browsers (Chrome, Safari) */
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 0.5rem;
-  }
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #be9293; 
-    border-radius: 5px;
-  }  
+}
 
-  /* Firefox */
-  /* Scrollbar */
-  scrollbar {
+/* Webkit-based browsers (Chrome, Safari) */
+/* Scrollbar */
+::-webkit-scrollbar {
     width: 0.5rem;
-  }
-  /* Handle */
-  scrollbar thumb {
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #be9293;
     border-radius: 5px;
-  }
-  
-  @media only screen and (max-width: 1020px) {
+}
+
+/* Firefox */
+/* Scrollbar */
+scrollbar {
+    width: 0.5rem;
+}
+/* Handle */
+scrollbar thumb {
+    background: #be9293;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 1020px) {
     .Playlist {
-      width: 90%;
-      height: auto;
-      max-height: 60vh;
-      input {
-        font-size: 0.9rem;
-      }
+        width: 90%;
+        height: auto;
+        max-height: 60vh;
+        input {
+            font-size: 0.9rem;
+        }
     }
-  }
+}
