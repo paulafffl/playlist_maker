@@ -19,7 +19,7 @@ h1 {
 }
 
 h1 .highlight {
-    color: #be9293;
+    color: #d6acad;
 }
 
 p {
@@ -60,4 +60,23 @@ h2 {
         align-items: center;
         flex-direction: column;
     }
+}
+
+footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-size: 0.8rem;
+    color: #010c3f;
+    background-color: #d6acad;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    color: #010c3f;
+    margin-left: 0.25rem;
+    text-decoration: underline;
 }

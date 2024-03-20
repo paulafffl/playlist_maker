@@ -84,6 +84,16 @@ class App extends React.Component {
                         />
                     </div>
                 </div>
+                <footer>
+                    Built by
+                    <a
+                        href="https://www.linkedin.com/in/paulafernandeslima/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Paula Lima
+                    </a>
+                </footer>
             </div>
         );
     }
