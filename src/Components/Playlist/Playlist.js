@@ -24,14 +24,16 @@ class Playlist extends React.Component {
                     onRemove={this.props.onRemove}
                     isRemoval={true}
                 />
-                <div className="Button-Container">
-                    <button
-                        className="Playlist-save"
-                        onClick={this.props.onSave}
-                    >
-                        SAVE TO SPOTIFY
-                    </button>
-                </div>
+                {this.props.playlistTracks.length > 0 && (
+                    <div className="Button-Container">
+                        <button
+                            className="Playlist-save"
+                            onClick={this.props.onSave}
+                        >
+                            SAVE TO SPOTIFY
+                        </button>
+                    </div>
+                )}
                 {this.props.alert && (
                     <p className="Succes-Message">
                         {this.props.alert}

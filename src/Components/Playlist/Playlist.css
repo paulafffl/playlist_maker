@@ -3,7 +3,7 @@
     padding: 1rem;
     overflow-y: scroll;
     overflow-x: hidden;
-    min-height: 35vh;
+    min-height: 40vh;
     max-height: 80vh;
     background-color: rgba(1, 12, 63, 0.7);
 }
@@ -87,10 +87,10 @@ scrollbar thumb {
 @media only screen and (max-width: 1020px) {
     .Playlist {
         width: 90%;
-        min-height: auto;
+        min-height: 12vh;
         max-height: 60vh;
         input {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
     }
 }
