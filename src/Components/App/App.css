@@ -9,7 +9,8 @@ html {
 }
 
 h1 {
-    padding: 0.77rem 0;
+    margin: 0;
+    padding: 0.77rem 0 0.2rem;
     background-color: #010c3f;
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -33,11 +34,12 @@ h2 {
 
 .App {
     height: 100%;
-    padding: 0 15vw;
+    padding: 0 15vw 10vh;
     background-image: url('./matt-botsford-OKLqGsCT8qs-unsplash.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Work Sans', sans-serif;
     font-weight: 500;
     color: #fff;
@@ -50,6 +52,10 @@ h2 {
 }
 
 @media only screen and (max-width: 1020px) {
+    .App {
+        background-image: url('./matt-botsford-OKLqGsCT8qs-unsplash-mobile.jpg');
+        background-attachment: fixed;
+    }
     .App-playlist {
         align-items: center;
         flex-direction: column;

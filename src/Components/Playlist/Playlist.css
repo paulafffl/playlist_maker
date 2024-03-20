@@ -1,10 +1,10 @@
 .Playlist {
     width: 45%;
     padding: 1rem;
-    height: 950px;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 950px;
+    min-height: 35vh;
+    max-height: 80vh;
     background-color: rgba(1, 12, 63, 0.7);
 }
 
@@ -87,7 +87,7 @@ scrollbar thumb {
 @media only screen and (max-width: 1020px) {
     .Playlist {
         width: 90%;
-        height: auto;
+        min-height: auto;
         max-height: 60vh;
         input {
             font-size: 0.9rem;
