@@ -17,3 +17,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. On src/util/Spotify.js, comment `redirectUri` and uncomment `redirectUriLocal`
 1. Run `npm start` to launch a local environment
 1. Files will be served at `http://localhost:3000`, but the website has also been deployed at http://react-app-jamming.surge.sh/
+
+## Deployment
+
+Run `npm run deploy` - this script will execute:
+
+1. `npm run build` to build the application
+2. `node postbuild.js` to set the domain name with the CNAME file
+3. `surge --project ./build` to deploy the build directory using [Surge](https://surge.sh/)

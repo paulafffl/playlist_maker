@@ -18,6 +18,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+        "deploy": "react-scripts build && node postbuild.js && surge --project ./build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
