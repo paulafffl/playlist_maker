@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
+import toast, { Toaster } from 'react-hot-toast';
 
 class App extends React.Component {
     constructor(props) {
@@ -53,11 +54,24 @@ class App extends React.Component {
     }
 
     search(term) {
-        Spotify.search(term).then((mappedTracks) => {
-            this.setState({
-                searchResults: mappedTracks,
+        if (term) {
+            Spotify.search(term).then((mappedTracks) => {
+                this.setState({
+                    searchResults: mappedTracks,
+                });
             });
-        });
+        } else {
+            toast(`🎧 Please first type\na Song, Album of Artist`, {
+                style: {
+                    textAlign: 'center',
+                    fontWeight: '800',
+                    fontFamily: 'Poppins',
+                    borderRadius: '10px',
+                    background: '#d6acad',
+                    color: '#010c3f',
+                },
+            });
+        }
     }
 
     render() {
@@ -94,6 +108,7 @@ class App extends React.Component {
                         Paula Lima
                     </a>
                 </footer>
+                <Toaster />
             </div>
         );
     }
