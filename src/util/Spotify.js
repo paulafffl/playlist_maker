@@ -28,19 +28,15 @@ const Spotify = {
         return new Promise((resolve, reject) => {
             let accessToken = localStorage.getItem('accessToken');
             if (accessToken) {
-                console.log('storedToken');
                 resolve(accessToken);
             } else {
                 let accessTokenFromUrl = Spotify.getAccessTokenFromUrl();
                 if (accessTokenFromUrl) {
-                    console.log('urlWithToken');
                     accessToken = accessTokenFromUrl;
                     resolve(accessToken);
                 } else {
-                    console.log('will go to accessUrl');
                     const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
                     window.location = accessUrl;
-                    console.log("it's now in the accessUrl");
                     let accessTokenFromUrl = Spotify.getAccessTokenFromUrl();
                     accessToken = accessTokenFromUrl;
                     reject(accessToken);
@@ -54,14 +50,12 @@ const Spotify = {
             headers: { Authorization: `Bearer ${accessToken}` },
         })
             .then((response) => {
-                console.log('fetch ended');
                 return response.json();
             })
             .then((jsonResponse) => {
                 if (!jsonResponse.tracks) {
                     return [];
                 }
-                console.log('fetch tracks', jsonResponse.tracks);
                 return jsonResponse.tracks.items.map((track) => {
                     return {
                         id: track.id,

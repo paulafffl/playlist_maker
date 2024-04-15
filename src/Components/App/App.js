@@ -102,7 +102,6 @@ class App extends React.Component {
     componentDidMount() {
         const savedTerm = localStorage.getItem('savedTerm');
         if (savedTerm) {
-            console.log('FETCH FROM COMPONENT DID MOUNT');
             this.fetchTracks(savedTerm);
         }
     }
