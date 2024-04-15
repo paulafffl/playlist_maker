@@ -54,7 +54,7 @@ h2 {
 @media only screen and (max-width: 1020px) {
     .App {
         background-image: url('./matt-botsford-OKLqGsCT8qs-unsplash-mobile.jpg');
-        background-attachment: fixed;
+        background-attachment: scroll;
     }
     .App-playlist {
         align-items: center;
