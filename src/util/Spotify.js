@@ -2,10 +2,10 @@ let accessToken;
 const client_id = '5b3b133da7dc4f749ba57a7a3575e821';
 
 //redirectUri for deployment
-const redirectUri = 'http://react-app-jamming.surge.sh';
+// const redirectUri = 'http://react-app-jamming.surge.sh';
 
 //redirectUri for local use
-// const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://localhost:3000/';
 
 const Spotify = {
     getAccessToken(term) {
@@ -27,13 +27,13 @@ const Spotify = {
 
             // in case the access token variable is empty and is not in the URL.
         } else {
-            localStorage.setItem('savedTerm', term);
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
             window.location = accessUrl;
         }
     },
 
     search(term) {
+        localStorage.setItem('savedTerm', term);
         const accessToken = Spotify.getAccessToken(term);
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: { Authorization: `Bearer ${accessToken}` },
