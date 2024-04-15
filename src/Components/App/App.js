@@ -21,6 +21,7 @@ class App extends React.Component {
         this.updatePlaylistName = this.updatePlaylistName.bind(this);
         this.savePlaylist = this.savePlaylist.bind(this);
         this.search = this.search.bind(this);
+        this.fetchTracks = this.fetchTracks.bind(this);
     }
 
     addTrack(track) {
@@ -55,22 +56,41 @@ class App extends React.Component {
 
     search(term) {
         if (term) {
-            Spotify.search(term).then((mappedTracks) => {
-                this.setState({
-                    searchResults: mappedTracks,
-                });
-            });
+            localStorage.setItem('savedTerm', term);
+            this.fetchTracks(term);
         } else {
             toast(`🎧 Please first type\na Song, Album of Artist`, {
                 style: {
                     textAlign: 'center',
-                    fontWeight: '800',
+                    fontWeight: '700',
                     fontFamily: 'Poppins',
                     borderRadius: '10px',
                     background: '#d6acad',
                     color: '#010c3f',
                 },
             });
+        }
+    }
+
+    async fetchTracks(term) {
+        Spotify.getAccessToken()
+            .then((accessToken) => {
+                Spotify.search(term, accessToken).then((mappedTracks) => {
+                    this.setState({
+                        searchResults: mappedTracks || [],
+                    });
+                });
+            })
+            .catch((error) => {
+                console.error('User must grant access to search results');
+            });
+    }
+
+    componentDidMount() {
+        const savedTerm = localStorage.getItem('savedTerm');
+        if (savedTerm) {
+            console.log('FETCH FROM COMPONENT DID MOUNT');
+            this.fetchTracks(savedTerm);
         }
     }
 

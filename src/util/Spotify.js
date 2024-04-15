@@ -1,4 +1,3 @@
-let accessToken;
 const client_id = '5b3b133da7dc4f749ba57a7a3575e821';
 
 //redirectUri for deployment
@@ -8,43 +7,61 @@ const redirectUri = 'http://react-app-jamming.surge.sh';
 // const redirectUri = 'http://localhost:3000/';
 
 const Spotify = {
-    getAccessToken(term) {
-        if (accessToken) {
-            return accessToken;
-        }
+    getAccessTokenFromUrl() {
+        const urlWithToken = window.location.href.match(/access_token=([^&]*)/);
+        const expiresIn = window.location.href.match(/expires_in=([^&]*)/);
+        if (urlWithToken && expiresIn) {
+            const accessToken = urlWithToken[1];
+            localStorage.setItem('accessToken', accessToken);
 
-        // check for access token match
-        const accessTokenObtained =
-            window.location.href.match(/access_token=([^&]*)/);
-        const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
-        if (accessTokenObtained && expiresInMatch) {
-            accessToken = accessTokenObtained[1];
-            const expiresIn = Number(expiresInMatch[1]);
-            // wipe the access token and URL parameters, allowing to grab a new token when it expires
-            window.setTimeout(() => (accessToken = ''), expiresIn * 1000);
-            window.history.pushState('Access Token', null, '/');
+            const expirationDate = Number(expiresIn[1]);
+            window.setTimeout(() => {
+                localStorage.removeItem('accessToken');
+                window.history.pushState('Access Token', null, '/');
+            }, expirationDate * 1000);
+            window.location = redirectUri;
             return accessToken;
-
-            // in case the access token variable is empty and is not in the URL.
-        } else {
-            const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-            window.location = accessUrl;
         }
     },
 
-    search(term) {
-        localStorage.setItem('savedTerm', term);
-        const accessToken = Spotify.getAccessToken(term);
+    getAccessToken() {
+        return new Promise((resolve, reject) => {
+            let accessToken = localStorage.getItem('accessToken');
+            if (accessToken) {
+                console.log('storedToken');
+                resolve(accessToken);
+            } else {
+                let accessTokenFromUrl = Spotify.getAccessTokenFromUrl();
+                if (accessTokenFromUrl) {
+                    console.log('urlWithToken');
+                    accessToken = accessTokenFromUrl;
+                    resolve(accessToken);
+                } else {
+                    console.log('will go to accessUrl');
+                    const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+                    window.location = accessUrl;
+                    console.log("it's now in the accessUrl");
+                    let accessTokenFromUrl = Spotify.getAccessTokenFromUrl();
+                    accessToken = accessTokenFromUrl;
+                    reject(accessToken);
+                }
+            }
+        });
+    },
+
+    search(term, accessToken) {
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: { Authorization: `Bearer ${accessToken}` },
         })
             .then((response) => {
+                console.log('fetch ended');
                 return response.json();
             })
             .then((jsonResponse) => {
                 if (!jsonResponse.tracks) {
                     return [];
                 }
+                console.log('fetch tracks', jsonResponse.tracks);
                 return jsonResponse.tracks.items.map((track) => {
                     return {
                         id: track.id,
