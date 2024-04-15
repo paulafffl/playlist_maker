@@ -56,19 +56,32 @@ class App extends React.Component {
 
     search(term) {
         if (term) {
+            toast(
+                <h3>
+                    👏
+                    <a
+                        href="https://www.linkedin.com/in/paulafernandeslima/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Message me
+                    </a>{' '}
+                    for access!
+                    <h4>
+                        🔒 Due to Spotify API policies on personal projects,
+                        users must be manually approved.
+                    </h4>
+                </h3>,
+            );
             localStorage.setItem('savedTerm', term);
             this.fetchTracks(term);
         } else {
-            toast(`🎧 Please first type\na Song, Album of Artist`, {
-                style: {
-                    textAlign: 'center',
-                    fontWeight: '700',
-                    fontFamily: 'Poppins',
-                    borderRadius: '10px',
-                    background: '#d6acad',
-                    color: '#010c3f',
-                },
-            });
+            toast(
+                <h3>
+                    🎧 Please first type <br />a Song, Album of Artist
+                </h3>,
+                { style: { background: '#d6acad', color: '#010c3f' } },
+            );
         }
     }
 
