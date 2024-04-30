@@ -68,7 +68,7 @@ class App extends React.Component {
                     </a>{' '}
                     for access!
                     <h4>
-                        🔒 Due to Spotify API policies on personal projects,
+                        🔒 Due to Spotify API new policy for personal projects,
                         users must be manually approved.
                     </h4>
                 </h3>,
